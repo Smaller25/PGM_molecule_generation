@@ -1,0 +1,452 @@
+Setting random seed 0.
+Dataset parameters: {"max_nodes_per_batch": 20000, "max_partial_nodes_per_batch": 25000, "trace_element_keep_prob": 0.4, "add_self_loop_edges": true, "tie_fwd_bkwd_edges": true, "graph_properties": {"sa_score": {"type": "regression", "graph_representation_size": 64, "graph_aggregation_num_heads": 8, "graph_aggregation_weighting_fun": "sigmoid", "graph_aggregation_hidden_layers": [], "predictor_mlp_layer_sizes": [], "loss_weight_factor": 0.02}, "clogp": {"type": "regression", "graph_representation_size": 64, "graph_aggregation_num_heads": 8, "graph_aggregation_weighting_fun": "sigmoid", "graph_aggregation_hidden_layers": [], "predictor_mlp_layer_sizes": [32], "loss_weight_factor": 0.02}, "mol_weight": {"type": "regression", "graph_representation_size": 16, "graph_aggregation_num_heads": 4, "graph_aggregation_weighting_fun": "sigmoid", "graph_aggregation_hidden_layers": [], "predictor_mlp_layer_sizes": [], "loss_weight_factor": 0.02}}, "data_reader_max_queue_size": 500, "data_reader_num_workers": 20, "trace_element_non_carbon_keep_prob": 0.5}
+Model parameters: {"gnn_aggregation_function": "sum", "gnn_message_activation_function": "leaky_relu", "gnn_message_activation_before_aggregation": false, "gnn_hidden_dim": 64, "gnn_use_target_state_as_input": false, "gnn_normalize_by_num_incoming": true, "gnn_num_edge_MLP_hidden_layers": 0, "gnn_message_calculation_class": "GGNN", "gnn_initial_node_representation_activation": "tanh", "gnn_dense_intermediate_layer_activation": "tanh", "gnn_num_layers": 12, "gnn_dense_every_num_layers": 2, "gnn_residual_every_num_layers": 2, "gnn_use_inter_layer_layernorm": true, "gnn_layer_input_dropout_rate": 0.0, "gnn_global_exchange_mode": "gru", "gnn_global_exchange_every_num_layers": 2, "gnn_global_exchange_weighting_fun": "softmax", "gnn_global_exchange_num_heads": 4, "gnn_global_exchange_dropout_rate": 0.0, "optimizer": "Adam", "learning_rate": 0.001, "learning_rate_warmup_steps": null, "learning_rate_decay_steps": null, "momentum": 0.85, "rmsprop_rho": 0.98, "gradient_clip_value": 0.5, "gradient_clip_norm": null, "gradient_clip_global_norm": null, "use_intermediate_gnn_results": true, "latent_repr_size": 512, "node_classification_loss_weight": 1.0, "first_node_classification_loss_weight": 0.07, "edge_selection_loss_weight": 1.0, "edge_type_loss_weight": 1.0, "attachment_point_selection_weight": 1.0, "num_train_steps_between_valid": 5000, "logged_loss_smoothing_window_size": 100, "decoder_gnn_aggregation_function": "sum", "decoder_gnn_message_activation_function": "leaky_relu", "decoder_gnn_message_activation_before_aggregation": false, "decoder_gnn_hidden_dim": 64, "decoder_gnn_use_target_state_as_input": false, "decoder_gnn_normalize_by_num_incoming": true, "decoder_gnn_num_edge_MLP_hidden_layers": 0, "decoder_gnn_message_calculation_class": "GGNN", "decoder_gnn_initial_node_representation_activation": "tanh", "decoder_gnn_dense_intermediate_layer_activation": "leaky_relu", "decoder_gnn_num_layers": 12, "decoder_gnn_dense_every_num_layers": 4, "decoder_gnn_residual_every_num_layers": 10000, "decoder_gnn_use_inter_layer_layernorm": true, "decoder_gnn_layer_input_dropout_rate": 0.0, "decoder_gnn_global_exchange_mode": "gru", "decoder_gnn_global_exchange_every_num_layers": 10000, "decoder_gnn_global_exchange_weighting_fun": "softmax", "decoder_gnn_global_exchange_num_heads": 4, "decoder_gnn_global_exchange_dropout_rate": 0.0, "decoder_graph_repr_size": 256, "decoder_graph_repr_mlp_layers": [256, 256], "decoder_graph_repr_num_heads": 16, "decoder_graph_repr_dropout_rate": 0.0, "decoder_categorical_features_embedding_dim": 64, "decoder_num_edge_types_to_classify": 3, "decoder_edge_candidate_scorer_hidden_layers": [128, 64, 32], "decoder_edge_type_selector_hidden_layers": [128, 64, 32], "decoder_edge_selection_dropout_rate": 0.0, "decoder_distance_truncation": 10, "decoder_compatible_distance_embedding_init": true, "decoder_node_type_selector_hidden_layers": [256, 256], "decoder_node_selection_dropout_rate": 0.0, "decoder_first_node_type_selector_hidden_layers": [256, 256], "decoder_first_node_type_selection_dropout_rate": 0.0, "decoder_attachment_point_selector_hidden_layers": [128, 64, 32], "decoder_attachment_point_selection_dropout_rate": 0.0, "decoder_max_nodes_per_batch": 10000, "categorical_features_embedding_dim": 64, "latent_repr_mlp_layers": [512, 512], "latent_repr_num_heads": 32, "latent_repr_dropout_rate": 0.0, "latent_sample_strategy": "per_graph", "property_predictor_mlp_layers": [64, 32], "property_predictor_mlp_dropout_rate": 0.0, "kl_divergence_weight": 0.02, "kl_divergence_annealing_beta": 0.999}
+Num train steps between valid: 5000
+Num valid steps: None
+Initial valid metric: 
+Avg weighted sum. of graph losses:  11.2294
+Avg weighted sum. of prop losses:   0.1499
+Avg node class. loss:                 6.9182
+Avg first node class. loss:           4.8182
+Avg edge selection loss:              1.6961
+Avg edge type loss:                   0.6196
+Avg attachment point selection loss:  1.1368
+Avg KL divergence:                    1858.0934
+Property results: sa_score: MAE 1.38, MSE 3.65 (norm MAE: 1.71) | clogp: MAE 3.97, MSE 21.26 (norm MAE: 2.19) | mol_weight: MAE 397.00, MSE 169853.72 (norm MAE: 3.60).
+== Results after 5000 training steps
+ Train:  0.0274 loss | 
+Avg weighted sum. of graph losses:  3.0961
+Avg weighted sum. of prop losses:   0.0358
+Avg node class. loss:                 1.3321
+Avg first node class. loss:           1.1140
+Avg edge selection loss:              0.5348
+Avg edge type loss:                   0.1949
+Avg attachment point selection loss:  0.7222
+Avg KL divergence:                    14.5403
+Property results: sa_score: MAE 0.47, MSE 0.39 (norm MAE: 0.59) | clogp: MAE 0.99, MSE 1.66 (norm MAE: 0.55) | mol_weight: MAE 72.35, MSE 9457.42 (norm MAE: 0.66) | 869.28 graphs/s
+ Valid:  0.0252 loss | 
+Avg weighted sum. of graph losses:  2.8492
+Avg weighted sum. of prop losses:   0.0314
+Avg node class. loss:                 1.1806
+Avg first node class. loss:           0.9086
+Avg edge selection loss:              0.4900
+Avg edge type loss:                   0.1829
+Avg attachment point selection loss:  0.6296
+Avg KL divergence:                    13.8561
+Property results: sa_score: MAE 0.45, MSE 0.34 (norm MAE: 0.55) | clogp: MAE 0.94, MSE 1.46 (norm MAE: 0.52) | mol_weight: MAE 55.28, MSE 4835.26 (norm MAE: 0.50) | 889.66 graphs/s
+  (Best results so far, target metric decreased from 11.37937 to 2.88060.)
+== Results after 10000 training steps
+ Train:  0.0239 loss | 
+Avg weighted sum. of graph losses:  2.6942
+Avg weighted sum. of prop losses:   0.0294
+Avg node class. loss:                 1.0665
+Avg first node class. loss:           0.8016
+Avg edge selection loss:              0.4765
+Avg edge type loss:                   0.1790
+Avg attachment point selection loss:  0.5786
+Avg KL divergence:                    15.7067
+Property results: sa_score: MAE 0.41, MSE 0.28 (norm MAE: 0.50) | clogp: MAE 0.90, MSE 1.32 (norm MAE: 0.49) | mol_weight: MAE 52.23, MSE 4350.85 (norm MAE: 0.47) | 859.42 graphs/s
+ Valid:  0.0227 loss | 
+Avg weighted sum. of graph losses:  2.5684
+Avg weighted sum. of prop losses:   0.0274
+Avg node class. loss:                 0.9516
+Avg first node class. loss:           0.6936
+Avg edge selection loss:              0.4662
+Avg edge type loss:                   0.1755
+Avg attachment point selection loss:  0.5281
+Avg KL divergence:                    18.8841
+Property results: sa_score: MAE 0.39, MSE 0.26 (norm MAE: 0.48) | clogp: MAE 0.84, MSE 1.17 (norm MAE: 0.46) | mol_weight: MAE 46.79, MSE 3478.34 (norm MAE: 0.42) | 887.58 graphs/s
+  (Best results so far, target metric decreased from 2.88060 to 2.59575.)
+== Results after 15000 training steps
+ Train:  0.0216 loss | 
+Avg weighted sum. of graph losses:  2.4383
+Avg weighted sum. of prop losses:   0.0259
+Avg node class. loss:                 0.8827
+Avg first node class. loss:           0.6634
+Avg edge selection loss:              0.4596
+Avg edge type loss:                   0.1720
+Avg attachment point selection loss:  0.4686
+Avg KL divergence:                    19.5087
+Property results: sa_score: MAE 0.38, MSE 0.25 (norm MAE: 0.47) | clogp: MAE 0.80, MSE 1.04 (norm MAE: 0.44) | mol_weight: MAE 42.30, MSE 2851.32 (norm MAE: 0.38) | 851.16 graphs/s
+ Valid:  0.0207 loss | 
+Avg weighted sum. of graph losses:  2.3402
+Avg weighted sum. of prop losses:   0.0248
+Avg node class. loss:                 0.8336
+Avg first node class. loss:           0.6425
+Avg edge selection loss:              0.4562
+Avg edge type loss:                   0.1691
+Avg attachment point selection loss:  0.4150
+Avg KL divergence:                    20.1990
+Property results: sa_score: MAE 0.38, MSE 0.24 (norm MAE: 0.47) | clogp: MAE 0.76, MSE 0.96 (norm MAE: 0.42) | mol_weight: MAE 39.29, MSE 2448.55 (norm MAE: 0.36) | 885.75 graphs/s
+  (Best results so far, target metric decreased from 2.59575 to 2.36501.)
+== Results after 20000 training steps
+ Train:  0.0205 loss | 
+Avg weighted sum. of graph losses:  2.3130
+Avg weighted sum. of prop losses:   0.0244
+Avg node class. loss:                 0.8069
+Avg first node class. loss:           0.6023
+Avg edge selection loss:              0.4499
+Avg edge type loss:                   0.1686
+Avg attachment point selection loss:  0.4079
+Avg KL divergence:                    21.0459
+Property results: sa_score: MAE 0.37, MSE 0.24 (norm MAE: 0.46) | clogp: MAE 0.75, MSE 0.92 (norm MAE: 0.41) | mol_weight: MAE 37.86, MSE 2279.24 (norm MAE: 0.34) | 852.54 graphs/s
+ Valid:  0.0201 loss | 
+Avg weighted sum. of graph losses:  2.2713
+Avg weighted sum. of prop losses:   0.0238
+Avg node class. loss:                 0.7894
+Avg first node class. loss:           0.5856
+Avg edge selection loss:              0.4467
+Avg edge type loss:                   0.1668
+Avg attachment point selection loss:  0.3899
+Avg KL divergence:                    21.0862
+Property results: sa_score: MAE 0.37, MSE 0.23 (norm MAE: 0.46) | clogp: MAE 0.73, MSE 0.86 (norm MAE: 0.40) | mol_weight: MAE 36.63, MSE 2123.04 (norm MAE: 0.33) | 883.68 graphs/s
+  (Best results so far, target metric decreased from 2.36501 to 2.29505.)
+== Results after 25000 training steps
+ Train:  0.0199 loss | 
+Avg weighted sum. of graph losses:  2.2450
+Avg weighted sum. of prop losses:   0.0237
+Avg node class. loss:                 0.7655
+Avg first node class. loss:           0.5543
+Avg edge selection loss:              0.4432
+Avg edge type loss:                   0.1661
+Avg attachment point selection loss:  0.3787
+Avg KL divergence:                    21.8447
+Property results: sa_score: MAE 0.37, MSE 0.24 (norm MAE: 0.46) | clogp: MAE 0.73, MSE 0.86 (norm MAE: 0.40) | mol_weight: MAE 36.05, MSE 2064.59 (norm MAE: 0.33) | 852.42 graphs/s
+ Valid:  0.0196 loss | 
+Avg weighted sum. of graph losses:  2.2167
+Avg weighted sum. of prop losses:   0.0233
+Avg node class. loss:                 0.7448
+Avg first node class. loss:           0.5254
+Avg edge selection loss:              0.4422
+Avg edge type loss:                   0.1649
+Avg attachment point selection loss:  0.3656
+Avg KL divergence:                    22.3504
+Property results: sa_score: MAE 0.37, MSE 0.24 (norm MAE: 0.46) | clogp: MAE 0.70, MSE 0.80 (norm MAE: 0.38) | mol_weight: MAE 35.68, MSE 2021.70 (norm MAE: 0.32) | 884.64 graphs/s
+  (Best results so far, target metric decreased from 2.29505 to 2.23996.)
+== Results after 30000 training steps
+ Train:  0.0194 loss | 
+Avg weighted sum. of graph losses:  2.1917
+Avg weighted sum. of prop losses:   0.0231
+Avg node class. loss:                 0.7356
+Avg first node class. loss:           0.5204
+Avg edge selection loss:              0.4370
+Avg edge type loss:                   0.1638
+Avg attachment point selection loss:  0.3582
+Avg KL divergence:                    22.2701
+Property results: sa_score: MAE 0.37, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.69, MSE 0.79 (norm MAE: 0.38) | mol_weight: MAE 35.38, MSE 1981.72 (norm MAE: 0.32) | 850.36 graphs/s
+ Valid:  0.0192 loss | 
+Avg weighted sum. of graph losses:  2.1679
+Avg weighted sum. of prop losses:   0.0229
+Avg node class. loss:                 0.7174
+Avg first node class. loss:           0.5046
+Avg edge selection loss:              0.4373
+Avg edge type loss:                   0.1636
+Avg attachment point selection loss:  0.3462
+Avg KL divergence:                    22.6538
+Property results: sa_score: MAE 0.37, MSE 0.23 (norm MAE: 0.46) | clogp: MAE 0.68, MSE 0.76 (norm MAE: 0.37) | mol_weight: MAE 34.53, MSE 1885.57 (norm MAE: 0.31) | 885.64 graphs/s
+  (Best results so far, target metric decreased from 2.23996 to 2.19074.)
+== Results after 35000 training steps
+ Train:  0.0192 loss | 
+Avg weighted sum. of graph losses:  2.1615
+Avg weighted sum. of prop losses:   0.0229
+Avg node class. loss:                 0.7177
+Avg first node class. loss:           0.5022
+Avg edge selection loss:              0.4332
+Avg edge type loss:                   0.1624
+Avg attachment point selection loss:  0.3469
+Avg KL divergence:                    22.5685
+Property results: sa_score: MAE 0.37, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.68, MSE 0.76 (norm MAE: 0.37) | mol_weight: MAE 34.99, MSE 1941.66 (norm MAE: 0.32) | 849.11 graphs/s
+ Valid:  0.0192 loss | 
+Avg weighted sum. of graph losses:  2.1691
+Avg weighted sum. of prop losses:   0.0234
+Avg node class. loss:                 0.7454
+Avg first node class. loss:           0.5167
+Avg edge selection loss:              0.4309
+Avg edge type loss:                   0.1629
+Avg attachment point selection loss:  0.3385
+Avg KL divergence:                    22.0013
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.70, MSE 0.79 (norm MAE: 0.38) | mol_weight: MAE 37.05, MSE 2171.84 (norm MAE: 0.34) | 889.34 graphs/s
+== Results after 40000 training steps
+ Train:  0.0189 loss | 
+Avg weighted sum. of graph losses:  2.1313
+Avg weighted sum. of prop losses:   0.0227
+Avg node class. loss:                 0.7031
+Avg first node class. loss:           0.4871
+Avg edge selection loss:              0.4277
+Avg edge type loss:                   0.1608
+Avg attachment point selection loss:  0.3351
+Avg KL divergence:                    22.7879
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.67, MSE 0.75 (norm MAE: 0.37) | mol_weight: MAE 34.75, MSE 1918.46 (norm MAE: 0.32) | 853.39 graphs/s
+ Valid:  0.0187 loss | 
+Avg weighted sum. of graph losses:  2.1109
+Avg weighted sum. of prop losses:   0.0227
+Avg node class. loss:                 0.6948
+Avg first node class. loss:           0.4738
+Avg edge selection loss:              0.4280
+Avg edge type loss:                   0.1624
+Avg attachment point selection loss:  0.3166
+Avg KL divergence:                    23.0534
+Property results: sa_score: MAE 0.37, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.67, MSE 0.74 (norm MAE: 0.37) | mol_weight: MAE 34.56, MSE 1887.66 (norm MAE: 0.31) | 874.97 graphs/s
+  (Best results so far, target metric decreased from 2.19074 to 2.13358.)
+== Results after 45000 training steps
+ Train:  0.0187 loss | 
+Avg weighted sum. of graph losses:  2.1064
+Avg weighted sum. of prop losses:   0.0226
+Avg node class. loss:                 0.6904
+Avg first node class. loss:           0.4656
+Avg edge selection loss:              0.4252
+Avg edge type loss:                   0.1599
+Avg attachment point selection loss:  0.3235
+Avg KL divergence:                    23.0140
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.67, MSE 0.73 (norm MAE: 0.37) | mol_weight: MAE 34.69, MSE 1909.27 (norm MAE: 0.31) | 848.10 graphs/s
+ Valid:  0.0185 loss | 
+Avg weighted sum. of graph losses:  2.0959
+Avg weighted sum. of prop losses:   0.0225
+Avg node class. loss:                 0.6778
+Avg first node class. loss:           0.4438
+Avg edge selection loss:              0.4236
+Avg edge type loss:                   0.1587
+Avg attachment point selection loss:  0.3211
+Avg KL divergence:                    23.4595
+Property results: sa_score: MAE 0.37, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.66, MSE 0.70 (norm MAE: 0.36) | mol_weight: MAE 34.21, MSE 1854.23 (norm MAE: 0.31) | 883.83 graphs/s
+  (Best results so far, target metric decreased from 2.13358 to 2.11832.)
+== Results after 50000 training steps
+ Train:  0.0185 loss | 
+Avg weighted sum. of graph losses:  2.0872
+Avg weighted sum. of prop losses:   0.0225
+Avg node class. loss:                 0.6766
+Avg first node class. loss:           0.4434
+Avg edge selection loss:              0.4221
+Avg edge type loss:                   0.1577
+Avg attachment point selection loss:  0.3211
+Avg KL divergence:                    23.2129
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.66, MSE 0.72 (norm MAE: 0.36) | mol_weight: MAE 34.70, MSE 1909.09 (norm MAE: 0.31) | 848.26 graphs/s
+ Valid:  0.0183 loss | 
+Avg weighted sum. of graph losses:  2.0701
+Avg weighted sum. of prop losses:   0.0224
+Avg node class. loss:                 0.6744
+Avg first node class. loss:           0.4340
+Avg edge selection loss:              0.4227
+Avg edge type loss:                   0.1592
+Avg attachment point selection loss:  0.3129
+Avg KL divergence:                    22.8146
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.44) | clogp: MAE 0.66, MSE 0.71 (norm MAE: 0.36) | mol_weight: MAE 34.22, MSE 1852.12 (norm MAE: 0.31) | 884.48 graphs/s
+  (Best results so far, target metric decreased from 2.11832 to 2.09241.)
+== Results after 55000 training steps
+ Train:  0.0184 loss | 
+Avg weighted sum. of graph losses:  2.0702
+Avg weighted sum. of prop losses:   0.0224
+Avg node class. loss:                 0.6677
+Avg first node class. loss:           0.4251
+Avg edge selection loss:              0.4199
+Avg edge type loss:                   0.1569
+Avg attachment point selection loss:  0.3145
+Avg KL divergence:                    23.3562
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.45) | clogp: MAE 0.66, MSE 0.71 (norm MAE: 0.36) | mol_weight: MAE 34.53, MSE 1891.13 (norm MAE: 0.31) | 848.83 graphs/s
+ Valid:  0.0182 loss | 
+Avg weighted sum. of graph losses:  2.0530
+Avg weighted sum. of prop losses:   0.0223
+Avg node class. loss:                 0.6617
+Avg first node class. loss:           0.4198
+Avg edge selection loss:              0.4191
+Avg edge type loss:                   0.1581
+Avg attachment point selection loss:  0.3052
+Avg KL divergence:                    23.2572
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.65, MSE 0.71 (norm MAE: 0.36) | mol_weight: MAE 33.90, MSE 1822.62 (norm MAE: 0.31) | 888.22 graphs/s
+  (Best results so far, target metric decreased from 2.09241 to 2.07531.)
+== Results after 60000 training steps
+ Train:  0.0182 loss | 
+Avg weighted sum. of graph losses:  2.0545
+Avg weighted sum. of prop losses:   0.0223
+Avg node class. loss:                 0.6596
+Avg first node class. loss:           0.4127
+Avg edge selection loss:              0.4175
+Avg edge type loss:                   0.1553
+Avg attachment point selection loss:  0.3089
+Avg KL divergence:                    23.5023
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.45) | clogp: MAE 0.65, MSE 0.69 (norm MAE: 0.36) | mol_weight: MAE 34.55, MSE 1897.83 (norm MAE: 0.31) | 846.60 graphs/s
+ Valid:  0.0183 loss | 
+Avg weighted sum. of graph losses:  2.0632
+Avg weighted sum. of prop losses:   0.0232
+Avg node class. loss:                 0.6650
+Avg first node class. loss:           0.4159
+Avg edge selection loss:              0.4178
+Avg edge type loss:                   0.1552
+Avg attachment point selection loss:  0.3177
+Avg KL divergence:                    23.1661
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.68, MSE 0.76 (norm MAE: 0.38) | mol_weight: MAE 36.65, MSE 2123.39 (norm MAE: 0.33) | 873.00 graphs/s
+== Results after 65000 training steps
+ Train:  0.0181 loss | 
+Avg weighted sum. of graph losses:  2.0452
+Avg weighted sum. of prop losses:   0.0223
+Avg node class. loss:                 0.6557
+Avg first node class. loss:           0.4045
+Avg edge selection loss:              0.4151
+Avg edge type loss:                   0.1541
+Avg attachment point selection loss:  0.3066
+Avg KL divergence:                    23.5654
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.65, MSE 0.69 (norm MAE: 0.36) | mol_weight: MAE 34.54, MSE 1892.15 (norm MAE: 0.31) | 843.50 graphs/s
+ Valid:  0.0181 loss | 
+Avg weighted sum. of graph losses:  2.0393
+Avg weighted sum. of prop losses:   0.0219
+Avg node class. loss:                 0.6598
+Avg first node class. loss:           0.3966
+Avg edge selection loss:              0.4169
+Avg edge type loss:                   0.1559
+Avg attachment point selection loss:  0.2939
+Avg KL divergence:                    23.5712
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.64, MSE 0.66 (norm MAE: 0.35) | mol_weight: MAE 33.41, MSE 1773.85 (norm MAE: 0.30) | 885.53 graphs/s
+  (Best results so far, target metric decreased from 2.07531 to 2.06115.)
+== Results after 70000 training steps
+ Train:  0.0181 loss | 
+Avg weighted sum. of graph losses:  2.0404
+Avg weighted sum. of prop losses:   0.0223
+Avg node class. loss:                 0.6525
+Avg first node class. loss:           0.3992
+Avg edge selection loss:              0.4131
+Avg edge type loss:                   0.1535
+Avg attachment point selection loss:  0.3072
+Avg KL divergence:                    23.6005
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.65, MSE 0.69 (norm MAE: 0.36) | mol_weight: MAE 34.59, MSE 1900.65 (norm MAE: 0.31) | 842.33 graphs/s
+ Valid:  0.0180 loss | 
+Avg weighted sum. of graph losses:  2.0306
+Avg weighted sum. of prop losses:   0.0219
+Avg node class. loss:                 0.6407
+Avg first node class. loss:           0.3762
+Avg edge selection loss:              0.4142
+Avg edge type loss:                   0.1533
+Avg attachment point selection loss:  0.2923
+Avg KL divergence:                    24.5078
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.45) | clogp: MAE 0.63, MSE 0.66 (norm MAE: 0.35) | mol_weight: MAE 33.08, MSE 1731.01 (norm MAE: 0.30) | 884.19 graphs/s
+  (Best results so far, target metric decreased from 2.06115 to 2.05247.)
+== Results after 75000 training steps
+ Train:  0.0180 loss | 
+Avg weighted sum. of graph losses:  2.0258
+Avg weighted sum. of prop losses:   0.0222
+Avg node class. loss:                 0.6483
+Avg first node class. loss:           0.3927
+Avg edge selection loss:              0.4114
+Avg edge type loss:                   0.1526
+Avg attachment point selection loss:  0.2986
+Avg KL divergence:                    23.6665
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.65, MSE 0.68 (norm MAE: 0.36) | mol_weight: MAE 34.49, MSE 1890.61 (norm MAE: 0.31) | 842.12 graphs/s
+ Valid:  0.0178 loss | 
+Avg weighted sum. of graph losses:  2.0120
+Avg weighted sum. of prop losses:   0.0221
+Avg node class. loss:                 0.6440
+Avg first node class. loss:           0.3883
+Avg edge selection loss:              0.4111
+Avg edge type loss:                   0.1538
+Avg attachment point selection loss:  0.2913
+Avg KL divergence:                    23.5341
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.64, MSE 0.68 (norm MAE: 0.35) | mol_weight: MAE 34.26, MSE 1853.03 (norm MAE: 0.31) | 883.89 graphs/s
+  (Best results so far, target metric decreased from 2.05247 to 2.03408.)
+== Results after 80000 training steps
+ Train:  0.0179 loss | 
+Avg weighted sum. of graph losses:  2.0196
+Avg weighted sum. of prop losses:   0.0222
+Avg node class. loss:                 0.6462
+Avg first node class. loss:           0.3878
+Avg edge selection loss:              0.4098
+Avg edge type loss:                   0.1522
+Avg attachment point selection loss:  0.2973
+Avg KL divergence:                    23.6499
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.65, MSE 0.68 (norm MAE: 0.36) | mol_weight: MAE 34.59, MSE 1896.41 (norm MAE: 0.31) | 842.72 graphs/s
+ Valid:  0.0178 loss | 
+Avg weighted sum. of graph losses:  2.0093
+Avg weighted sum. of prop losses:   0.0218
+Avg node class. loss:                 0.6399
+Avg first node class. loss:           0.3762
+Avg edge selection loss:              0.4113
+Avg edge type loss:                   0.1527
+Avg attachment point selection loss:  0.2895
+Avg KL divergence:                    23.7922
+Property results: sa_score: MAE 0.35, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.63, MSE 0.65 (norm MAE: 0.35) | mol_weight: MAE 33.97, MSE 1824.96 (norm MAE: 0.31) | 870.50 graphs/s
+  (Best results so far, target metric decreased from 2.03408 to 2.03115.)
+== Results after 85000 training steps
+ Train:  0.0178 loss | 
+Avg weighted sum. of graph losses:  2.0124
+Avg weighted sum. of prop losses:   0.0221
+Avg node class. loss:                 0.6423
+Avg first node class. loss:           0.3857
+Avg edge selection loss:              0.4077
+Avg edge type loss:                   0.1512
+Avg attachment point selection loss:  0.2961
+Avg KL divergence:                    23.7044
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.64, MSE 0.68 (norm MAE: 0.35) | mol_weight: MAE 34.40, MSE 1877.91 (norm MAE: 0.31) | 843.63 graphs/s
+ Valid:  0.0178 loss | 
+Avg weighted sum. of graph losses:  2.0083
+Avg weighted sum. of prop losses:   0.0221
+Avg node class. loss:                 0.6459
+Avg first node class. loss:           0.3889
+Avg edge selection loss:              0.4075
+Avg edge type loss:                   0.1523
+Avg attachment point selection loss:  0.2878
+Avg KL divergence:                    23.6778
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.65, MSE 0.68 (norm MAE: 0.36) | mol_weight: MAE 33.89, MSE 1825.76 (norm MAE: 0.31) | 886.48 graphs/s
+  (Best results so far, target metric decreased from 2.03115 to 2.03044.)
+== Results after 90000 training steps
+ Train:  0.0180 loss | 
+Avg weighted sum. of graph losses:  2.0254
+Avg weighted sum. of prop losses:   0.0223
+Avg node class. loss:                 0.6442
+Avg first node class. loss:           0.3859
+Avg edge selection loss:              0.4076
+Avg edge type loss:                   0.1513
+Avg attachment point selection loss:  0.3085
+Avg KL divergence:                    23.6327
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.65, MSE 0.68 (norm MAE: 0.36) | mol_weight: MAE 34.72, MSE 1915.86 (norm MAE: 0.31) | 845.00 graphs/s
+ Valid:  0.0180 loss | 
+Avg weighted sum. of graph losses:  2.0327
+Avg weighted sum. of prop losses:   0.0227
+Avg node class. loss:                 0.6558
+Avg first node class. loss:           0.3908
+Avg edge selection loss:              0.4091
+Avg edge type loss:                   0.1523
+Avg attachment point selection loss:  0.3115
+Avg KL divergence:                    23.1012
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.63, MSE 0.65 (norm MAE: 0.35) | mol_weight: MAE 37.55, MSE 2213.02 (norm MAE: 0.34) | 884.49 graphs/s
+== Results after 95000 training steps
+ Train:  0.0179 loss | 
+Avg weighted sum. of graph losses:  2.0189
+Avg weighted sum. of prop losses:   0.0222
+Avg node class. loss:                 0.6418
+Avg first node class. loss:           0.3827
+Avg edge selection loss:              0.4057
+Avg edge type loss:                   0.1507
+Avg attachment point selection loss:  0.3072
+Avg KL divergence:                    23.6346
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.64, MSE 0.67 (norm MAE: 0.35) | mol_weight: MAE 34.55, MSE 1897.77 (norm MAE: 0.31) | 837.80 graphs/s
+ Valid:  0.0182 loss | 
+Avg weighted sum. of graph losses:  2.0477
+Avg weighted sum. of prop losses:   0.0223
+Avg node class. loss:                 0.6574
+Avg first node class. loss:           0.4003
+Avg edge selection loss:              0.4098
+Avg edge type loss:                   0.1520
+Avg attachment point selection loss:  0.3292
+Avg KL divergence:                    22.8487
+Property results: sa_score: MAE 0.37, MSE 0.24 (norm MAE: 0.45) | clogp: MAE 0.64, MSE 0.66 (norm MAE: 0.35) | mol_weight: MAE 34.46, MSE 1885.53 (norm MAE: 0.31) | 885.54 graphs/s
+== Results after 100000 training steps
+ Train:  0.0180 loss | 
+Avg weighted sum. of graph losses:  2.0279
+Avg weighted sum. of prop losses:   0.0223
+Avg node class. loss:                 0.6435
+Avg first node class. loss:           0.3832
+Avg edge selection loss:              0.4060
+Avg edge type loss:                   0.1504
+Avg attachment point selection loss:  0.3151
+Avg KL divergence:                    23.5968
+Property results: sa_score: MAE 0.36, MSE 0.23 (norm MAE: 0.45) | clogp: MAE 0.64, MSE 0.68 (norm MAE: 0.35) | mol_weight: MAE 34.59, MSE 1901.56 (norm MAE: 0.31) | 845.71 graphs/s
+ Valid:  0.0178 loss | 
+Avg weighted sum. of graph losses:  2.0150
+Avg weighted sum. of prop losses:   0.0219
+Avg node class. loss:                 0.6422
+Avg first node class. loss:           0.3749
+Avg edge selection loss:              0.4054
+Avg edge type loss:                   0.1510
+Avg attachment point selection loss:  0.3096
+Avg KL divergence:                    23.3428
+Property results: sa_score: MAE 0.36, MSE 0.22 (norm MAE: 0.44) | clogp: MAE 0.63, MSE 0.64 (norm MAE: 0.34) | mol_weight: MAE 33.94, MSE 1820.45 (norm MAE: 0.31) | 883.57 graphs/s
+Stopping training after 15000 train steps without improvement on validation metric.
+Training took 15139.396674394608s. Best validation metric: 2.0304405174531315
